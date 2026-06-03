@@ -20,8 +20,9 @@
   --snow:#f7efe2;
   --nav-h:64px;
 }
-html{scroll-snap-type:y proximity;overflow-y:scroll;scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
-body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;cursor:none}
+html{scroll-snap-type:y proximity;overflow-y:scroll;scroll-behavior:smooth;scroll-padding-top:var(--nav-h);font-size:112.5%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:700px){html{font-size:106.25%}}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 /* scroll progress bar (brand identity) */
 #scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:600;background:linear-gradient(90deg,var(--red),var(--gold-l));box-shadow:0 0 12px rgba(200,23,31,.5);transition:width .1s linear}
@@ -40,7 +41,9 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
 #snow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:4}
 
 /* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(253,248,242,.96);backdrop-filter:blur(14px);border-bottom:1.5px solid rgba(180,120,40,.18);transition:background .3s,box-shadow .3s,border-color .3s;box-shadow:0 2px 20px rgba(100,50,10,.08)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;height:64px;background:rgba(253,248,242,.96);backdrop-filter:blur(14px);border-bottom:1.5px solid rgba(180,120,40,.18);transition:background .3s,box-shadow .3s,border-color .3s;box-shadow:0 2px 20px rgba(100,50,10,.08)}
+/* keep the nav from overflowing once content is enlarged */
+@media(min-width:701px) and (max-width:1300px){#nav .nav-cta{display:none}.nav-links a{padding:.38rem .45rem;letter-spacing:.8px}}
 /* transparent dark nav while over the hero — showcases the game */
 #nav.at-top{background:rgba(6,16,10,.32)!important;border-bottom-color:rgba(247,239,226,.1)!important;box-shadow:none!important}
 #nav.at-top .nav-links a{color:rgba(247,239,226,.8)!important}
@@ -158,10 +161,10 @@ section{scroll-snap-align:start;position:relative;min-height:100vh;display:flex;
 
 /* SECTION UTILS */
 .s-inner{max-width:1140px;margin:0 auto;padding:0 3.5rem;width:100%}
-.s-lbl{display:block;font-family:'Cinzel',serif;font-size:.62rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:.55rem}
-.s-title{font-family:'Cinzel',serif;font-size:clamp(1.7rem,3vw,2.6rem);font-weight:700;color:var(--ink);line-height:1.18;margin-bottom:.8rem}
+.s-lbl{display:block;font-family:'Cinzel',serif;font-size:.7rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--red);margin-bottom:.55rem}
+.s-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,3vw,2.7rem);font-weight:700;color:var(--ink);line-height:1.18;margin-bottom:.8rem}
 .s-title em{color:var(--red);font-style:normal}
-.s-body{font-size:.9rem;line-height:1.85;color:var(--ink2);max-width:520px}
+.s-body{font-size:1rem;line-height:1.8;color:var(--ink2);max-width:560px}
 .rule{width:44px;height:3px;background:linear-gradient(90deg,var(--red),var(--gold-l));border-radius:2px;margin-bottom:1.7rem;box-shadow:0 1px 6px rgba(200,23,31,.2)}
 .sf{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .sf.on{opacity:1;transform:translateY(0)}
@@ -520,6 +523,10 @@ select option { background: var(--cream2); color: var(--ink); }
   background:rgba(247,239,226,.08)!important;
   border-color:rgba(247,239,226,.6)!important;
 }
+/* scroll cue is dark-on-dark by default — make it legible on the hero */
+#hero .scroll-cue{color:rgba(247,239,226,.65)!important;font-size:.62rem!important}
+#hero .hero-eyebrow{font-size:.72rem!important;letter-spacing:3.5px!important}
+#hero .hero-tagline{font-size:clamp(.78rem,1.4vw,.95rem)!important;letter-spacing:4px!important}
 
 /* Fix tag pills in card sections */
 span[style*="border-radius:20px"] {
